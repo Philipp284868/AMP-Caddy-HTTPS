@@ -1,0 +1,9 @@
+{
+  "commit": "bfc9df2dfb5d9eac508cda8abe20255018170ad5",
+  "caddy": "2.11.4",
+  "archive_sha256": "527fbf917c39189a1e3b31d34fa955601680b2d5c8055d2a87b8b9588dec7bb9",
+  "files": {
+    "amp-caddy.sh": "807631d70a8c6c759b584420f3e6c2197477f221637383b90087b47fb796bbc3",
+    "install-caddy.sh": "c054875cf1331dc1aece6bb0cdee79c4f703f928f911e0b4c9d1f089331d0238"
+  }
+}

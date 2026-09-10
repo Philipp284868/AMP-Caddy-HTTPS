@@ -1,21 +1,47 @@
 [
-    {
-        "UpdateStageName": "Caddy herunterladen",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "GithubRelease",
-        "UpdateSourceArch": "x86_64",
-        "UpdateSourceData": "caddy_2.11.4_linux_amd64.tar.gz",
-        "UpdateSourceArgs": "caddyserver/caddy",
-        "UpdateSourceVersion": "v2.11.4",
-        "UpdateSourceTarget": "serverfiles",
-        "UnzipUpdateSource": true,
-        "OverwriteExistingFiles": true,
-        "DeleteAfterExtract": true
-    },
-    {
-        "UpdateStageName": "Caddy ausführbar machen",
-        "UpdateSourcePlatform": "Linux",
-        "UpdateSource": "SetExecutableFlag",
-        "UpdateSourceArgs": "serverfiles/caddy"
-    }
+  {
+    "UpdateStageName": "Betriebswerkzeug laden: amp-caddy.sh",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSourceArch": "x86_64",
+    "UpdateSource": "FetchURL",
+    "UpdateSourceData": "https://raw.githubusercontent.com/Philipp284868/AMP-Caddy-HTTPS/bfc9df2dfb5d9eac508cda8abe20255018170ad5/runtime/amp-caddy.sh",
+    "UpdateSourceTarget": "serverfiles",
+    "UnzipUpdateSource": false,
+    "OverwriteExistingFiles": true,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Betriebswerkzeug laden: install-caddy.sh",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSourceArch": "x86_64",
+    "UpdateSource": "FetchURL",
+    "UpdateSourceData": "https://raw.githubusercontent.com/Philipp284868/AMP-Caddy-HTTPS/bfc9df2dfb5d9eac508cda8abe20255018170ad5/runtime/install-caddy.sh",
+    "UpdateSourceTarget": "serverfiles",
+    "UnzipUpdateSource": false,
+    "OverwriteExistingFiles": true,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "Offizielles Caddy v2.11.4 laden",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSourceArch": "x86_64",
+    "UpdateSource": "GithubRelease",
+    "UpdateSourceArgs": "caddyserver/caddy",
+    "UpdateSourceVersion": "v2.11.4",
+    "UpdateSourceData": "caddy_2.11.4_linux_amd64.tar.gz",
+    "UpdateSourceTarget": "serverfiles",
+    "UnzipUpdateSource": false,
+    "OverwriteExistingFiles": true,
+    "SkipOnFailure": false
+  },
+  {
+    "UpdateStageName": "SHA-256 pruefen und Caddy sicher installieren",
+    "UpdateSourcePlatform": "Linux",
+    "UpdateSourceArch": "x86_64",
+    "UpdateSource": "Executable",
+    "UpdateSourceData": "/bin/bash",
+    "UpdateSourceArgs": "\"{{$FullBaseDir}}install-caddy.sh\"",
+    "SkipOnFailure": false,
+    "RunInBackground": false
+  }
 ]

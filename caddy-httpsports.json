@@ -1,16 +1,18 @@
 [
-    {
-        "Protocol": "TCP",
-        "Port": 18080,
-        "Ref": "HttpPort",
-        "Name": "HTTP",
-        "Description": "HTTP und Zertifikatsprüfung"
-    },
-    {
-        "Protocol": "TCP",
-        "Port": 18443,
-        "Ref": "HttpsPort",
-        "Name": "HTTPS",
-        "Description": "HTTPS-Zugang zum Spiel"
-    }
+  {
+    "Protocol": "TCP",
+    "Port": 18080,
+    "Name": "HTTP",
+    "Description": "Intern HTTP; FRITZ!Box extern 80 hierher.",
+    "Ref": "HttpPort",
+    "Required": false
+  },
+  {
+    "Protocol": "TCP",
+    "Port": 18443,
+    "Name": "HTTPS",
+    "Description": "Intern HTTPS; FRITZ!Box extern 443 hierher.",
+    "Ref": "HttpsPort",
+    "Required": false
+  }
 ]

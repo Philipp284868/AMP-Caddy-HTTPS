@@ -1,10 +1,11 @@
 {
-    "id": "506d9f9a-f09e-4582-8f27-4f6758ba0f46",
-    "authors": [
-        "Philipp - Made with AMP Config Generator"
-    ],
-    "origin": "https://github.com/Philipp/AMPTemplates.git",
-    "url": "https://github.com/Philipp/AMPTemplates",
-    "imagefile": "",
-    "prefix": "Philipp"
+  "id": "506d9f9a-f09e-4582-8f27-4f6758ba0f46",
+  "authors": [
+    "Philipp284868"
+  ],
+  "origin": "https://github.com/Philipp284868/AMP-Caddy-HTTPS.git",
+  "url": "https://github.com/Philipp284868/AMP-Caddy-HTTPS",
+  "imagefile": "",
+  "prefix": "Philipp",
+  "repotype": "AppTemplates"
 }

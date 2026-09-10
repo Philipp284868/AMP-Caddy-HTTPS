@@ -1,1 +1,64 @@
-[]
+[
+  {
+    "DisplayName": "Domain",
+    "FieldName": "Domain",
+    "Category": "HTTPS-Zugang",
+    "Description": "Deine oeffentliche Domain OHNE https:// und ohne Port, z.B. gaminglive.mooo.com. DNS und Router muessen eingerichtet sein.",
+    "InputType": "text",
+    "DefaultValue": "",
+    "Placeholder": "gaminglive.mooo.com",
+    "Required": true,
+    "MaxLength": 253,
+    "IncludeInCommandLine": false,
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Interne Spieladresse",
+    "FieldName": "Upstream",
+    "Category": "HTTPS-Zugang",
+    "Description": "Vom Caddy-Prozess erreichbarer HTTP-Spielserver, Name oder IPv4:Port. Gleicher Host: 127.0.0.1:7777. In getrennten Containern ist Loopback nicht automatisch richtig. NICHT die AMP-Verwaltung auf 8080.",
+    "InputType": "text",
+    "DefaultValue": "127.0.0.1:7777",
+    "Required": true,
+    "MaxLength": 260,
+    "IncludeInCommandLine": false,
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Betriebsart",
+    "FieldName": "Mode",
+    "Category": "HTTPS-Zugang",
+    "Description": "Spiel weiterleiten ist der normale Betrieb. Der HTTPS-Verbindungstest zeigt nur eine statische Bestaetigung, keine Spielbereitschaft. Nach Aenderungen Stop/Start.",
+    "InputType": "enum",
+    "EnumValues": {
+      "proxy": "Spiel weiterleiten",
+      "test": "Nur HTTPS-Verbindungstest"
+    },
+    "DefaultValue": "proxy",
+    "Required": true,
+    "IncludeInCommandLine": false,
+    "Hidden": false
+  },
+  {
+    "DisplayName": "ACME-Kontakt-E-Mail (optional)",
+    "FieldName": "AcmeEmail",
+    "Category": "HTTPS - Erweitert",
+    "Description": "Optionaler Kontakt fuer die Zertifikatsstelle. Kein Passwort eintragen.",
+    "InputType": "text",
+    "DefaultValue": "",
+    "MaxLength": 254,
+    "IncludeInCommandLine": false,
+    "Hidden": false
+  },
+  {
+    "DisplayName": "Zertifikatsspeicher (normal leer lassen)",
+    "FieldName": "StorageDirectory",
+    "Category": "HTTPS - Erweitert",
+    "Description": "Automatisch: vorhandenen Standardspeicher erhalten; sonst private/caddy-data. Nur bei Sondermigration einen bereits bestehenden absoluten Ordner eintragen. Gespeicherte Zuordnung wird nie still gewechselt.",
+    "InputType": "text",
+    "DefaultValue": "",
+    "MaxLength": 2048,
+    "IncludeInCommandLine": false,
+    "Hidden": false
+  }
+]
