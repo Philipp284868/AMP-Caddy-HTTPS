@@ -1,0 +1,21 @@
+[
+    {
+        "UpdateStageName": "Caddy herunterladen",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "GithubRelease",
+        "UpdateSourceArch": "x86_64",
+        "UpdateSourceData": "caddy_2.11.4_linux_amd64.tar.gz",
+        "UpdateSourceArgs": "caddyserver/caddy",
+        "UpdateSourceVersion": "v2.11.4",
+        "UpdateSourceTarget": "serverfiles",
+        "UnzipUpdateSource": true,
+        "OverwriteExistingFiles": true,
+        "DeleteAfterExtract": true
+    },
+    {
+        "UpdateStageName": "Caddy ausführbar machen",
+        "UpdateSourcePlatform": "Linux",
+        "UpdateSource": "SetExecutableFlag",
+        "UpdateSourceArgs": "serverfiles/caddy"
+    }
+]

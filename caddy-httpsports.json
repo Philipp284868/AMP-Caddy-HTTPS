@@ -1,0 +1,16 @@
+[
+    {
+        "Protocol": "TCP",
+        "Port": 18080,
+        "Ref": "HttpPort",
+        "Name": "HTTP",
+        "Description": "HTTP und Zertifikatsprüfung"
+    },
+    {
+        "Protocol": "TCP",
+        "Port": 18443,
+        "Ref": "HttpsPort",
+        "Name": "HTTPS",
+        "Description": "HTTPS-Zugang zum Spiel"
+    }
+]
