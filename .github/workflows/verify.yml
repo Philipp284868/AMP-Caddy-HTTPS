@@ -1,0 +1,45 @@
+name: Caddy-Vorlage pruefen
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: caddy-verify-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Offizielles Caddy herunterladen und Integritaet pruefen
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .ci-tools
+          curl --fail --location --retry 2 --connect-timeout 15 --max-time 120 --proto '=https' --tlsv1.2 \
+            https://github.com/caddyserver/caddy/releases/download/v2.11.4/caddy_2.11.4_linux_amd64.tar.gz \
+            -o .ci-tools/caddy_2.11.4_linux_amd64.tar.gz
+          echo '527fbf917c39189a1e3b31d34fa955601680b2d5c8055d2a87b8b9588dec7bb9  .ci-tools/caddy_2.11.4_linux_amd64.tar.gz' | sha256sum -c -
+          cp runtime/install-caddy.sh .ci-tools/install-caddy.sh
+          bash .ci-tools/install-caddy.sh
+          .ci-tools/caddy version
+      - name: Unit-Tests und echte TLS-/Proxy-/WebSocket-Integration
+        shell: bash
+        run: |
+          set -euo pipefail
+          export CADDY_TEST_BINARY="$PWD/.ci-tools/caddy"
+          python3 tests/test_system.py 2>&1 | tee test-results.txt
+          printf '\n## Caddy-Pruefung\n\nCommit: `%s`\n\n' "$GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
+          printf '```text\n' >> "$GITHUB_STEP_SUMMARY"
+          tail -n 8 test-results.txt >> "$GITHUB_STEP_SUMMARY"
+          printf '\n```\nKeine oeffentliche ACME-Ausstellung; keine Aenderung am privaten AMP-Server.\n' >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        if: always()
+        with:
+          name: caddy-pruefbericht
+          path: test-results.txt
+          retention-days: 7

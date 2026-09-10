@@ -1,0 +1,20 @@
+# Runtime state is private and must never be committed.
+.ci-tools/
+__pycache__/
+*.pyc
+caddy-https/
+private/
+caddy
+caddy.previous
+Caddyfile
+Caddyfile.generated*
+*.key
+*.pem
+*.pfx
+*.p12
+.env
+.env.*
+!.env.example
+*.tar.gz
+*.zip
+test-results.txt
